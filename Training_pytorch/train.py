@@ -21,7 +21,7 @@ import tempfile
 parser = argparse.ArgumentParser(description='PyTorch CIFAR-X Example')
 parser.add_argument('--type', default='cifar10', help='dataset for training')
 parser.add_argument('--batch_size', type=int, default=200, help='input batch size for training (default: 200)')
-parser.add_argument('--epochs', type=int, default=32, help='number of epochs to train (default: 32)')
+parser.add_argument('--epochs', type=int, default=10, help='number of epochs to train (default: 32)')
 parser.add_argument('--grad_scale', type=float, default=1, help='learning rate for wage delta calculation')
 parser.add_argument('--seed', type=int, default=117, help='random seed (default: 117)')
 parser.add_argument('--log_interval', type=int, default=100,  help='how many batches to wait before logging training status default = 100')
@@ -52,7 +52,7 @@ current_time = datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
 args = parser.parse_args()
 args.wl_weight = 5            # weight precision
 args.wl_grad = 5              # gradient precision
-args.cellBit = 5              # cell precision (in V2.0, we only support one-cell-per-synapse, i.e. cellBit==wl_weight==wl_grad)
+args.cellBit = 2              # cell precision (in V2.0, we only support one-cell-per-synapse, i.e. cellBit==wl_weight==wl_grad)
 args.max_level = 32           # Maximum number of conductance states during weight update (floor(log2(max_level))=cellBit) 
 args.c2cVari = 0.003          # cycle-to-cycle variation
 args.d2dVari = 0.0            # device-to-device variation
@@ -106,7 +106,7 @@ if args.cuda:
 # data loader and model
 assert args.type in ['cifar10', 'cifar100'], args.type
 train_loader, test_loader = dataset.get10(batch_size=args.batch_size, num_workers=1, data_root=os.path.join(tempfile.gettempdir(), os.path.join('public_dataset','pytorch')))
-model = model.cifar10(args = args, logger=logger)
+model = model.lenet5(args = args, logger=logger)
 if args.cuda:
     model.cuda()
 

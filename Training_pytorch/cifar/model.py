@@ -35,20 +35,21 @@ class LeNet(nn.Module):
         assert isinstance(features, nn.Sequential), type(features)
         self.features = features
         self.classifier = nn.Sequential(
-            QLinear(8192, 120, logger=logger,
+            QLinear(1024, 120, logger=logger,
                     wl_input = args.wl_activate,wl_activate=args.wl_activate,wl_error=args.wl_error,
                     wl_weight=args.wl_weight,inference=args.inference,onoffratio=args.onoffratio,cellBit=args.cellBit,
                     subArray=args.subArray,ADCprecision=args.ADCprecision,vari=args.vari,t=args.t,v=args.v,detect=args.detect,target=args.target, name='FC1_'),
-            nn.Sigmoid(inplace=True),
+            nn.ReLU(inplace=False),
             QLinear(120, 84, logger=logger,
                     wl_input = args.wl_activate,wl_activate=-1, wl_error=args.wl_error,
                     wl_weight=args.wl_weight,inference=args.inference,onoffratio=args.onoffratio,cellBit=args.cellBit,
                     subArray=args.subArray,ADCprecision=args.ADCprecision,vari=args.vari,t=args.t,v=args.v,detect=args.detect,target=args.target,name='FC2_'),
-            nn.Sigmoid(inplace=True),
+            nn.ReLU(inplace=False),
             QLinear(84, num_classes, logger=logger,
                     wl_input = args.wl_activate,wl_activate=-1, wl_error=args.wl_error,
                     wl_weight=args.wl_weight,inference=args.inference,onoffratio=args.onoffratio,cellBit=args.cellBit,
                     subArray=args.subArray,ADCprecision=args.ADCprecision,vari=args.vari,t=args.t,v=args.v,detect=args.detect,target=args.target,name='FC3_')
+
         )
 
         print(self.features)
@@ -58,7 +59,7 @@ class LeNet(nn.Module):
         x = self.features(x)
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
-        return 
+        return x
 
 
 def make_layers(cfg, args, logger ):

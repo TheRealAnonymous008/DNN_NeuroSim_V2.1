@@ -1,0 +1,14 @@
+-----------------------------------Chip layer-by-layer Performance---------------------------------
+Energy Efficiency TOPS/W: 2.11952
+Throughput TOPS: 1.51212
+Throughput FPS: 0.00819925
+--------------------------------------------------------------------------
+Peak Energy Efficiency TOPS/W: 19.3457
+Peak Throughput TOPS: 3.75345
+Peak Throughput FPS: 0.0203525
+-------------------------------------- Hardware Performance Done --------------------------------------
+
+------------------------------ Simulation Performance --------------------------------
+Total Run-time of NeuroSim: 222 seconds
+------------------------------ Simulation Performance --------------------------------
+Total Elapse: 3363.10, Best Result: 73.020%

@@ -1,0 +1,21 @@
+************************ Breakdown of Latency and Dynamic Energy *************************
+
+----------- ADC (or S/As and precharger for SRAM) readLatency is : 7.03123e+07ns
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readLatency is : 7.33546e+06ns
+----------- Synaptic Array w/o ADC (Forward + Activate Gradient) readLatency is : 4.07669e+07ns
+----------- Buffer buffer latency is: 6.87397e+09ns
+----------- Interconnect latency is: 1.56697e+09ns
+----------- Weight Gradient Calculation readLatency is : 1.23048e+09ns
+----------- Weight Update writeLatency is : -1.16617e+13ns
+----------- DRAM data transfer Latency is : 987789ns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------- ADC (or S/As and precharger for SRAM) readDynamicEnergy is : 2.71919e+10pJ
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readDynamicEnergy is : 3.48139e+09pJ
+----------- Synaptic Array w/o ADC (Forward + Activate Gradient) readDynamicEnergy is : 1.31584e+09pJ
+----------- Buffer readDynamicEnergy is: 1.62304e+09pJ
+----------- Interconnect readDynamicEnergy is: 5.00789e+10pJ
+----------- Weight Gradient Calculation readDynamicEnergy is : 8.24774e+10pJ
+----------- Weight Update writeDynamicEnergy is : 3.17431e+260pJ
+----------- DRAM data transfer Energy is : 5.85562e+10pJ
+
+************************ Breakdown of Latency and Dynamic Energy *************************

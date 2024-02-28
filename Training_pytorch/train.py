@@ -106,7 +106,7 @@ if args.cuda:
 # data loader and model
 assert args.type in ['cifar10', 'cifar100'], args.type
 train_loader, test_loader = dataset.get10(batch_size=args.batch_size, num_workers=1, data_root=os.path.join(tempfile.gettempdir(), os.path.join('public_dataset','pytorch')))
-model = model.cifar10(args = args, logger=logger)
+model = model.lenet5(args = args, logger=logger)
 if args.cuda:
     model.cuda()
 
